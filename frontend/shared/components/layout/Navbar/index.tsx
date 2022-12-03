@@ -3,21 +3,44 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
+interface INavbarItem {
+  link: string;
+  text: string;
+}
+
 interface INavbar {
   expand: string | boolean;
   fixed?: "top" | "bottom";
+  list?: Array<INavbarItem>;
 }
 
-const CollapsibleExample = (props: INavbar) => {
+const CollapsibleExample = ({ expand, fixed, list }: INavbar) => {
+  const getNavbarListArray = () => {
+    if (!list) {
+      return [];
+    }
+    return list;
+  };
+
   return (
-    <Navbar collapseOnSelect bg="dark" variant="dark" {...props}>
+    <Navbar
+      collapseOnSelect
+      bg="dark"
+      variant="dark"
+      expand={expand}
+      fixed={fixed}
+    >
       <Container>
         <Navbar.Brand href="#home">Home</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            {getNavbarListArray().map((list: any, index: any) => (
+              <Nav.Link href={list.link} key={index}>
+                {list.text}
+              </Nav.Link>
+            ))}
+
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
