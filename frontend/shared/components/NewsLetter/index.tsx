@@ -5,8 +5,8 @@ const NewsLetter = () => {
   return (
     <section className="containerNewsletter">
       <Form className="formContainer">
-        <Form.Group className="mb-1" controlId="formBasicEmail">
-          <Form.Label>Newsletter</Form.Label>
+        <Form.Group className="mb-1 inputContainer" controlId="formBasicEmail">
+          <Form.Label className="formLabel">Newsletter</Form.Label>
           <Form.Control
             className="inputForm"
             type="email"
@@ -14,15 +14,17 @@ const NewsLetter = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-1" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+        <Form.Group
+          className="mb-1 inputContainer"
+          controlId="formBasicPassword"
+        >
           <Form.Control
             className="inputForm"
             type="password"
             placeholder="Password"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button className="buttonForm" variant="primary" type="submit">
           Submit
         </Button>
       </Form>
