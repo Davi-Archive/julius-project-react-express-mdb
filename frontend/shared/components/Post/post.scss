@@ -1,0 +1,22 @@
+.containerPost {
+  display: flex;
+  flex: 1;
+  margin: 10px auto;
+  width: 90%;
+  justify-content: center;
+  position: relative;
+
+  .imagePostContainer {
+    flex: 0.3;
+  }
+
+  .contentContainer {
+    flex: 0.7;
+  }
+
+  .buttonBottomPost{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
+}

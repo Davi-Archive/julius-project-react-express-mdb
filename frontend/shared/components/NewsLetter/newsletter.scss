@@ -1,0 +1,10 @@
+.containerNewsletter {
+  display: flex;
+  width: 95%;
+  margin: auto;
+  background-color: var(--gray1);
+
+  .formContainer {
+    flex: 1;
+  }
+}

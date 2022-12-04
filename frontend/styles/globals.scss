@@ -1,4 +1,4 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 html,
 body {
@@ -6,8 +6,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 a {
@@ -19,6 +19,12 @@ a {
   box-sizing: border-box;
 }
 
+.horizontalLine{
+  border: 3px solid red;
+}
+
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -29,6 +35,14 @@ a {
   }
 }
 
+//variables
+:root{
+  --gray1: gray;
+}
+
+
 
 //imports
-@import '../shared/components/layout/Header/header.scss'
+@import "../shared/components/layout/Header/header.scss";
+@import "../shared/components/Post/post.scss";
+@import "../shared/components/NewsLetter/newsletter.scss";
