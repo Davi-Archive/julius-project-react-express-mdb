@@ -1,5 +1,5 @@
-const post = require("./postModel.js");
-const user = require("./userModel.js");
+const post = require("./postModel");
+const user = require("./userModel");
 
 module.exports = {
   post,

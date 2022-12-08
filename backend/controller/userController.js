@@ -1,11 +1,16 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const models = require("../models");
+
 const userDB = models.user;
+// eslint-disable-next-line no-unused-expressions
 require("dotenv").config;
 
-//@desc Register new user
-//@route POST /api/users
+// Generate JWT token for the database
+const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+
+// @desc Register new user
+// @route POST /api/users
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -44,15 +49,8 @@ const registerUser = async (req, res) => {
   }
 };
 
-// Generate JWT token for the database
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
-  });
-};
-
-//@desc Authenticate User
-//@route POST /api/users/login
+// @desc Authenticate User
+// @route POST /api/users/login
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -70,9 +68,9 @@ const loginUser = async (req, res) => {
   }
 };
 
-//@desc Get user data
-//@route POST /api/users/me
-//@access PRIVATE
+// @desc Get user data
+// @route POST /api/users/me
+// @access PRIVATE
 const getUserData = async (req, res) => {
   const { _id, name, email } = await userDB.findById(req.user.id);
   res.status(200).json({

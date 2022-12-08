@@ -1,13 +1,13 @@
 const express = require("express");
+
 const router = express.Router();
 const controller = require("../controller");
 const { protect } = require("../middleware/authMiddleware");
 
 router.route("/").get(controller.getPost).post(controller.postPost);
 
-
 // Protected routes for Production
-//router.route("/").get(controller.getPost).post(protect, controller.postPost);
+// router.route("/").get(controller.getPost).post(protect, controller.postPost);
 // router
 //   .route("/:id")
 //   .put(protect, controller.putPost)

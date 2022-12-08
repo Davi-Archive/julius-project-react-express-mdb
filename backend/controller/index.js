@@ -1,7 +1,7 @@
-const post = require("./postController.js");
+const post = require("./postController");
 const user = require("./userController");
 
 module.exports = {
   ...user,
-  ...post
+  ...post,
 };
