@@ -19,24 +19,7 @@ app.get("/", (req, res) => {
 });
 
 //about section route
-app.use("/portfolio/en/about", require("./routes/aboutRoutes.js"));
-
-//work section route
-app.use("/portfolio/en/work", require("./routes/workRoutes.js"));
-
-//skills section route
-app.use("/portfolio/en/skills", require("./routes/skillsRoutes.js"));
-
-//experiences section route
-app.use("/portfolio/en/experiences", require("./routes/experiencesRoutes.js"));
-
-//testimonials section route
-app.use(
-  "/portfolio/en/testimonials",
-  require("./routes/testimonialsRoutes.js")
-);
-//FORM CONTACT
-app.use("/portfolio/contact", require("./routes/formRoutes.js"));
+app.use("/api/post", require("./routes/postRoutes.js"));
 
 // user Create and Login
 app.use("/api/users", require("./routes/userRoutes"))
