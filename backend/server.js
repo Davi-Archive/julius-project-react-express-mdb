@@ -6,17 +6,17 @@ const path = require("path");
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger/swagger_output.json");
 
-
 const connectDB = require("./config/db.js");
 
 const app = express();
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 // //index of the API
 // app.get("/", (req, res) => {
 //   res.status(200)
