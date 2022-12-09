@@ -1,4 +1,4 @@
-import { Navbar, Header } from "../..";
+import {Header, NavbarHeader,NavbarTop} from '../..'
 
 const HeaderContainer = () => {
   const navbarTop = [
@@ -13,9 +13,9 @@ const HeaderContainer = () => {
 
   return (
     <>
-      <Navbar expand="lg" list={navbarTop} />
+      <NavbarTop expand="lg" list={navbarTop} />
       <Header />
-      <Navbar expand={true} list={navbarBellowHeader} />
+      <NavbarHeader />
     </>
   );
 };

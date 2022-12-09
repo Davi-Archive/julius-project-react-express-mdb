@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Button from "../Button";
 
 interface IPost {
   title?: string;
@@ -8,7 +9,7 @@ interface IPost {
 }
 
 const Post = ({ title, text, imageUrl }: IPost) => {
-  const getImagePost = (imageUrl: string|undefined): string => {
+  const getImagePost = (imageUrl: string | undefined): string => {
     if (imageUrl) return imageUrl;
     return "https://poe.ninja/images/classes/Raider_avatar.png";
   };
@@ -27,7 +28,9 @@ const Post = ({ title, text, imageUrl }: IPost) => {
             <p>{text}</p>
           </div>
         </div>
-        <button className="buttonBottomPost">Placeholder</button>
+        <div className="btnPostContainer">
+          <Button onClick={()=>console.log('click')}>Placeholder</Button>
+        </div>
       </article>
       <hr className="horizontalLine"></hr>
     </>
