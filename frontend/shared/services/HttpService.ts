@@ -1,5 +1,5 @@
-import axios from "axios";
 
+import axios from "axios";
 const API_URL = process.env.NEXT_PUBLIC_API_URL + '/api'
 
 export default class HttpService {
@@ -37,7 +37,7 @@ export default class HttpService {
     }
 
     async post(url: string, data: any) {
-        console.log(`api url: ${API_URL}${url} || POST`);
+        console.log(`api url: ${API_URL}${url} || POST ${JSON.stringify(data)}`);
         //@ts-ignore
         const res = await this.axios.post(url, data);
         return res;

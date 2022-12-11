@@ -1,10 +1,16 @@
 import { Footer, HeaderContainer, Post, NewsLetter } from "../shared";
+import UserService from '../shared/services/UserService'
 
 export default function Home() {
   interface IPost {
     title: string;
     imageUrl: string;
     text: string
+  }
+  const userService = new UserService();
+
+  let loginMock = () =>{
+    userService.login(null)
   }
 
   const posts = [
@@ -22,9 +28,14 @@ export default function Home() {
       <HeaderContainer />
 
       {posts.map((post: IPost, index: any) => (
-        <Post key={index} title={post.title} imageUrl={post.imageUrl} text={post.text} />
+        <Post
+          key={index}
+          title={post.title}
+          imageUrl={post.imageUrl}
+          text={post.text}
+        />
       ))}
-
+      <button onClick={()=>loginMock()}>LOGAR MOCK</button>
       <NewsLetter />
       <Footer />
     </div>

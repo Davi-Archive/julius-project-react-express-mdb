@@ -1,17 +1,20 @@
 import { UserData, UserDataSearch } from "../dto/userDto";
 import HttpService from "./HttpService";
 
-export default class ApiUsuarioService extends HttpService {
-    async login(credenciais: any) {
-        const res = await this.post('/users/login', credenciais)
+export default class UserService extends HttpService {
+
+    async login(credenciais: any): Promise<any> {
+        let mockObj = {
+            "email": "davi@davi.com",
+            "password": "davi"
+        }
+        const res = await this.post('/users/login', mockObj)
 
         localStorage.setItem("name", res.data.name);
         localStorage.setItem("email", res.data.email);
         localStorage.setItem("token", res.data.token);
-
-        const usuario = await this.get('/users/me');
-        console.log(usuario);
-        localStorage.setItem('id', usuario.data._id);
+        localStorage.setItem('id', res.data._id);
+        console.log(res);
 
 
         return res
@@ -22,7 +25,7 @@ export default class ApiUsuarioService extends HttpService {
     }
 
     async getInfoAboutMyUser(userData: UserDataSearch) {
-        if(!localStorage.getItem('id')){
+        if (!localStorage.getItem('id')) {
             return await this.post('/users', this.getInformationAboutTheLoggedUser)
         }
         return await this.post('/users', userData)
