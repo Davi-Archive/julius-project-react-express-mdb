@@ -1,4 +1,6 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+//variables
+@import "./variables.scss";
 
 html,
 body {
@@ -12,8 +14,6 @@ body {
   flex: 1;
 }
 
-
-
 a {
   color: inherit;
   text-decoration: none;
@@ -23,11 +23,28 @@ a {
   box-sizing: border-box;
 }
 
-.horizontalLine{
-  border: 3px solid red;
+.horizontalLine {
+  border: 3px solid $gray1;
 }
 
 
+// class for [mobile / desktop] hide
+.desktop {
+  @media screen and (min-width: $desktopBreakpoint) {
+    display: block;
+  }
+  @media screen and (max-width: calc($desktopBreakpoint - 1px)) {
+    display: none;
+  }
+}
+.mobile {
+  @media screen and (min-width: $desktopBreakpoint) {
+    display: none;
+  }
+  @media screen and (max-width: calc($desktopBreakpoint - 1px)) {
+    display: block;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   html {
@@ -39,10 +56,6 @@ a {
   }
 }
 
-//variables
-:root{
-  --gray1: gray;
-}
 
 
 

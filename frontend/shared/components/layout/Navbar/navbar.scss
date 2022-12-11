@@ -1,5 +1,16 @@
-.navbarHeaderContainer{
+.navbarTopContainer{
     display: flex;
     justify-content: center;
     margin: auto;
+}
+
+
+.navbarHeaderContainer{
+     display: flex;
+    justify-content: center;
+    margin: auto;
+}
+.navbarHeaderLine{
+    border: 2px solid $navbarLine;
+    color: black;
 }

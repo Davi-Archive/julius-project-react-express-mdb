@@ -29,7 +29,7 @@ const NavbarTop = ({ expand, fixed, list }: INavbar) => {
       variant="dark"
       expand={expand}
       fixed={fixed}
-      className="navbarHeaderContainer"
+      className="navbarTopContainer"
     >
       <Container>
         <Navbar.Brand href="#home">Home</Navbar.Brand>
