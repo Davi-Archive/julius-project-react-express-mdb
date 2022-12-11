@@ -1,41 +1,41 @@
+import { useEffect, useState } from "react";
 import { Footer, HeaderContainer, Post, NewsLetter } from "../shared";
-import UserService from '../shared/services/UserService'
+import { IOnePostFormat } from "../shared/dto/PostDto";
+import { PostService } from "../shared/services";
+import { Placeholder } from "../assets/images";
 
 export default function Home() {
-  interface IPost {
-    title: string;
-    imageUrl: string;
-    text: string
-  }
-  const userService = new UserService();
+  const postService = new PostService();
 
-  let loginMock = () =>{
-    userService.login(null)
-  }
+  useEffect(() => {
+    callPostsFromApi();
+  }, []);
 
-  const posts = [
+  const [posts, setPosts] = useState([
     {
-      title: "Titulo 1",
-      imageUrl: "https://poe.ninja/images/classes/Deadeye_avatar.png",
-      text: "Post1",
+      title: "",
+      imgUrl: "",
+      description: "",
     },
-    { title: "Titulo 2", imageUrl: "", text: "Post2" },
-    { title: "Titulo 3", imageUrl: "", text: "Post3" },
-  ];
+  ]);
+
+  async function callPostsFromApi() {
+    const { data } = await postService.loadPosts();
+    setPosts(data);
+  }
 
   return (
     <div>
       <HeaderContainer />
 
-      {posts.map((post: IPost, index: any) => (
+      {posts.map((post: IOnePostFormat, index: any) => (
         <Post
           key={index}
           title={post.title}
-          imageUrl={post.imageUrl}
-          text={post.text}
+          imageUrl={post.imgUrl ? post.imgUrl : Placeholder.src}
+          text={post.description}
         />
       ))}
-      <button onClick={()=>loginMock()}>LOGAR MOCK</button>
       <NewsLetter />
       <Footer />
     </div>
