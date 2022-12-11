@@ -10,6 +10,7 @@ const Header = () => {
           height={500}
           src={JuliusLogo.src}
           alt="Se eu não comprar nada o desconto é maior."
+          priority={true}
         />
       </div>
     </header>

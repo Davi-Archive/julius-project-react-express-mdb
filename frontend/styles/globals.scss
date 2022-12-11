@@ -12,6 +12,10 @@ body {
   height: 100%;
   display: flex;
   flex: 1;
+
+  @media screen and (min-width: $desktopBreakpoint) {
+    justify-content: center;
+  }
 }
 
 a {
@@ -26,7 +30,6 @@ a {
 .horizontalLine {
   border: 3px solid $gray1;
 }
-
 
 // class for [mobile / desktop] hide
 .desktop {
@@ -56,9 +59,6 @@ a {
   }
 }
 
-
-
-
 //imports
 @import "../shared/components/layout/Header/header.scss";
 @import "../shared/components/Post/post.scss";
@@ -66,3 +66,4 @@ a {
 @import "../shared/components/layout/Footer/footer.scss";
 @import "../shared/components/layout/Navbar/navbar.scss";
 @import "../shared/components/Button/button.scss";
+@import "../shared/helper/Loading/loading.scss";

@@ -1,5 +1,6 @@
 
 import axios from "axios";
+import { LoadingHelper } from "../helper/LoadingHelper";
 const API_URL = process.env.NEXT_PUBLIC_API_URL + '/api'
 
 export default class HttpService {
@@ -16,7 +17,7 @@ export default class HttpService {
             this.requisitionsNumber++;
 
             if (this.requisitionsNumber === 1) {
-                // LoadingHelper.exibir();
+                LoadingHelper.exibir();
                 console.log("exibir")
             }
             const token = localStorage.getItem("token");
@@ -29,7 +30,7 @@ export default class HttpService {
         this.axios.interceptors.response.use((response) => {
             this.requisitionsNumber--;
             if (this.requisitionsNumber === 0) {
-                // LoadingHelper.oculto();
+                LoadingHelper.oculto();
                 console.log("ocultar")
             }
             return response;

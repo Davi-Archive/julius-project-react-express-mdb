@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Footer, HeaderContainer, Post, NewsLetter } from "../shared";
+import { Placeholder } from "../assets/images";
+import { Footer, HeaderContainer, NewsLetter, Post } from "../shared";
 import { IOnePostFormat } from "../shared/dto/PostDto";
 import { PostService } from "../shared/services";
-import { Placeholder } from "../assets/images";
 
 export default function Home() {
   const postService = new PostService();
