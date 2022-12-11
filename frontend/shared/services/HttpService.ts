@@ -1,21 +1,21 @@
 import axios from "axios";
 
-process.env.NEXT_PUBLIC_API_URL + '/api'
+const API_URL = process.env.NEXT_PUBLIC_API_URL + '/api'
 
 export default class HttpService {
-    quantidadeRequisicoes = 0;
+    requisitionsNumber = 0;
     constructor() {
         //@ts-ignore
         this.axios = axios.create({
-            baseURL: process.env.NEXT_PUBLIC_API_URL + "/api",
+            baseURL: API_URL,
         });
 
-        this.quantidadeRequisicoes = 0;
+        this.requisitionsNumber = 0;
         //@ts-ignore
         this.axios.interceptors.request.use((config) => {
-            this.quantidadeRequisicoes++;
+            this.requisitionsNumber++;
 
-            if (this.quantidadeRequisicoes === 1) {
+            if (this.requisitionsNumber === 1) {
                 // LoadingHelper.exibir();
                 console.log("exibir")
             }
@@ -27,25 +27,37 @@ export default class HttpService {
         });
         //@ts-ignore
         this.axios.interceptors.response.use((response) => {
-            this.quantidadeRequisicoes--;
-            if (this.quantidadeRequisicoes === 0) {
+            this.requisitionsNumber--;
+            if (this.requisitionsNumber === 0) {
                 // LoadingHelper.oculto();
                 console.log("ocultar")
             }
             return response;
         });
     }
+
     async post(url: string, data: any) {
+        console.log(`api url: ${API_URL}${url} || POST`);
         //@ts-ignore
         const res = await this.axios.post(url, data);
         return res;
     }
+
     async get(url: string) {
+        console.log(`api url: ${API_URL}${url} || GET`);
         //@ts-ignore
         return await this.axios.get(url);
     }
+
     async put(url: string, data: any) {
+        console.log(`api url: ${API_URL}${url} || PUT`);
         //@ts-ignore
         return await this.axios.put(url, data);
+    }
+
+    async delete(url: string) {
+        console.log(`api url: ${API_URL}${url} || DELETE`);
+        //@ts-ignore
+        return await this.axios.delete(url);
     }
 }

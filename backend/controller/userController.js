@@ -7,7 +7,8 @@ const userDB = models.user;
 require("dotenv").config;
 
 // Generate JWT token for the database
-const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+const generateToken = (id) =>
+  jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
 
 // @desc Register new user
 // @route POST /api/users
@@ -69,15 +70,26 @@ const loginUser = async (req, res) => {
 };
 
 // @desc Get user data
-// @route POST /api/users/me
+// @route POST /api/users/me/:id
 // @access PRIVATE
 const getUserData = async (req, res) => {
-  const { _id, name, email } = await userDB.findById(req.user.id);
-  res.status(200).json({
-    id: _id,
-    name,
-    email,
-  });
+  try {
+    if (!req.params.id) {
+      return res.status(400).json({ error: "Missing id" });
+    }
+    const { _id, name, email } = await userDB.findById(req.params.id);
+
+    return res.status(200).json({
+      id: _id,
+      name,
+      email,
+    });
+  } catch (err) {
+    if (err.name === "CastError") {
+      return res.status(400).json({ error: "Bad Request, send a valid ID" });
+    }
+    return res.status(404).json({ msg: "Server Error", error: err });
+  }
 };
 
 module.exports = { registerUser, getUserData, loginUser };
