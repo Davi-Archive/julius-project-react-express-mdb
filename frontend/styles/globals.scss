@@ -15,6 +15,9 @@ body {
 
   @media screen and (min-width: $desktopBreakpoint) {
     justify-content: center;
+    body{
+       max-width: 1400px;
+    }
   }
 }
 
