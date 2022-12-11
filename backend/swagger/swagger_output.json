@@ -5,13 +5,13 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:3001",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "http"
   ],
   "paths": {
-    "/api/post/": {
+    "/api/posts/": {
       "get": {
         "description": "",
         "parameters": [],
@@ -23,7 +23,7 @@
         "responses": {}
       }
     },
-    "/api/post/{id}": {
+    "/api/posts/{id}": {
       "get": {
         "description": "",
         "parameters": [

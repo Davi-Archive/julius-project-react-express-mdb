@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 // //index of the API
 // app.get("/", (req, res) => {
 //   res.status(200)
@@ -22,7 +22,7 @@ app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 // });
 
 //  about section route
-app.use("/api/post", require("./routes/postRoutes"));
+app.use("/api/posts", require("./routes/postRoutes"));
 
 // user Create and Login
 app.use("/api/users", require("./routes/userRoutes"));
