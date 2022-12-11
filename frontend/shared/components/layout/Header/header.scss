@@ -1,7 +1,12 @@
 .headerContainer {
   display: flex;
   flex: 1;
-  margin: 13px auto 20px auto;
+  margin: 50px 0;
   align-items: center;
   justify-content: center;
+  height: 200px;
+
+  img{
+    object-fit:contain ;
+  }
 }

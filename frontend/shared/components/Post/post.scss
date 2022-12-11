@@ -6,15 +6,20 @@
   justify-content: center;
   position: relative;
 
-  .imagePostContainer {
-    flex: 0.3;
-  }
 
   .contentContainer {
-    flex: 0.7;
+    flex: 0.9;
+
+    .imagePostContainer {
+      flex: 0.1;
+      img{
+        object-fit: contain;
+        width: 100%;
+      }
+    }
   }
 
-  .buttonBottomPost{
+  .btnPostContainer{
     position: absolute;
     right: 5px;
     bottom: 5px;

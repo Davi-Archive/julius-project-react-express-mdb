@@ -1,14 +1,11 @@
-import Image from "next/image";
-import React from "react";
+import { useState } from "react";
+import { IOnePostFormat } from "../../dto/PostDto";
 import Button from "../Button";
 
-interface IPost {
-  title?: string;
-  text?: string;
-  imageUrl?: string;
-}
+const MAX_CHARACTERS_AT_MORE = 130;
 
-const Post = ({ title, text, imageUrl }: IPost) => {
+const Post = ({ title, description, imgUrl }: IOnePostFormat) => {
+  const [showMoreText, setShowMoreText] = useState<boolean>(false);
   const getImagePost = (imageUrl: string | undefined): string => {
     if (imageUrl) return imageUrl;
     return "https://poe.ninja/images/classes/Raider_avatar.png";
@@ -17,19 +14,44 @@ const Post = ({ title, text, imageUrl }: IPost) => {
   return (
     <>
       <article className="containerPost">
-        <div className="imagePostContainer">
-          <img src={getImagePost(imageUrl)} alt={title || "Post Image"} />
-        </div>
         <div className="contentContainer">
+          <div className="imagePostContainer">
+            <img src={getImagePost(imgUrl)} alt={title || "Post Image"} />
+          </div>
           <div className="titlePost">
             <h1>{title}</h1>
           </div>
           <div className="postTextContainer">
-            <p>{text}</p>
+            {!showMoreText && (
+              <>
+                <p>
+                  {description?.slice(0, MAX_CHARACTERS_AT_MORE)}{" "}
+                  <span
+                    className="showMoreOrHideText"
+                    onClick={() => setShowMoreText(true)}
+                  >
+                    ...mais
+                  </span>
+                </p>
+              </>
+            )}
+            {showMoreText && (
+              <>
+                <p>
+                  {description}{" "}
+                  <span
+                    className="showMoreOrHideText"
+                    onClick={() => setShowMoreText(false)}
+                  >
+                    ...esconder
+                  </span>
+                </p>
+              </>
+            )}
           </div>
         </div>
         <div className="btnPostContainer">
-          <Button onClick={()=>console.log('click')}>Placeholder</Button>
+          <Button onClick={() => console.log("click")}>Ler Mais</Button>
         </div>
       </article>
       <hr className="horizontalLine"></hr>

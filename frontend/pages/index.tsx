@@ -32,8 +32,8 @@ export default function Home() {
         <Post
           key={index}
           title={post.title}
-          imageUrl={post.imgUrl ? post.imgUrl : Placeholder.src}
-          text={post.description}
+          imgUrl={post.imgUrl ? post.imgUrl : Placeholder.src}
+          description={post.description}
         />
       ))}
       <NewsLetter />
