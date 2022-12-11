@@ -5,23 +5,34 @@
   width: 90%;
   justify-content: center;
   position: relative;
+  flex-direction: column;
 
-
-  .contentContainer {
-    flex: 0.9;
-
-    .imagePostContainer {
-      flex: 0.1;
-      img{
-        object-fit: contain;
-        width: 100%;
-      }
+  .imagePostContainer {
+    flex: 1;
+    margin: auto;
+    width: 100%;
+    img {
+      width: 100%;
     }
   }
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+  }
 
-  .btnPostContainer{
+  .btnPostContainer {
     position: absolute;
     right: 5px;
     bottom: 5px;
+  }
+
+  @media screen and (min-width:$desktopBreakpoint) {
+    flex-direction: row;
+
+    .imagePostContainer {
+    img {
+      width: 350px;
+    }
+  }
   }
 }

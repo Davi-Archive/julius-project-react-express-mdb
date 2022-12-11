@@ -14,10 +14,10 @@ const Post = ({ title, description, imgUrl }: IOnePostFormat) => {
   return (
     <>
       <article className="containerPost">
+        <div className="imagePostContainer">
+          <img src={getImagePost(imgUrl)} alt={title || "Post Image"} />
+        </div>
         <div className="contentContainer">
-          <div className="imagePostContainer">
-            <img src={getImagePost(imgUrl)} alt={title || "Post Image"} />
-          </div>
           <div className="titlePost">
             <h1>{title}</h1>
           </div>
